@@ -4,7 +4,7 @@ const db = require("../db");
 const { BadRequestError, NotFoundError } = require("../expressError");
 const { sqlForPartialUpdate } = require("../helpers/sql");
 
-/** Related functions for companies. */
+/** Related functions for members. */
 
 class Member {
   /** Create a member (from data), update db, return new member data.
@@ -122,14 +122,12 @@ member["groups"] = groupsRes.rows;
     return member;
   }
 
-  /** Update company data with `data`.
+  /** Update group data with `data`.
    *
    * This is a "partial update" --- it's fine if data doesn't contain all the
    * fields; this only changes provided ones.
    *
-   * Data can include: {name, description, numEmployees, logoUrl}
    *
-   * Returns {handle, name, description, numEmployees, logoUrl}
    *
    * Throws NotFoundError if not found.
    */
@@ -153,9 +151,9 @@ member["groups"] = groupsRes.rows;
 
     return member;
   }
-  /** Delete given company from database; returns undefined.
+  /** Delete given member from database; returns undefined.
    *
-   * Throws NotFoundError if company not found.
+   * Throws NotFoundError if member not found.
    **/
 
    static async remove(id) {

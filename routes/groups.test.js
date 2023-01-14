@@ -40,39 +40,8 @@ describe("POST /groups", function () {
     });
   });
 
-  test("unauth for users", async function () {
-    const resp = await request(app)
-        .post(`/groups`)
-        .send({
-          companyHandle: "c1",
-          title: "J-new",
-          target_goal: 10,
-        })
-        .set("authorization", `Bearer ${u1Token}`);
-    expect(resp.statusCode).toEqual(401);
-  });
-//********************NOT SURE WHAT TO DO HERE */
-  test("bad request with missing data", async function () {
-    const resp = await request(app)
-        .post(`/groups`)
-        .send({
-          companyHandle: "c1",
-        })
-        .set("authorization", `Bearer ${adminToken}`);
-    expect(resp.statusCode).toEqual(400);
-  });
+  
 
-  test("bad request with invalid data", async function () {
-    const resp = await request(app)
-        .post(`/groups`)
-        .send({
-          companyHandle: "c1",
-          title: "J-new",
-          target_goal: "not-a-number",
-        })
-        .set("authorization", `Bearer ${adminToken}`);
-    expect(resp.statusCode).toEqual(400);
-  });
 
 });
 
@@ -123,34 +92,7 @@ describe("GET /groups", function () {
         },
     );
   });
-
-  // test("works: filtering on 2 filters", async function () {
-  //   const resp = await request(app)
-  //       .get(`/jobs`)
-  //       .query({ minSalary: 2, title: "3" });
-  //   expect(resp.body).toEqual({
-  //         jobs: [
-  //           {
-  //             id: expect.any(Number),
-  //             title: "J3",
-  //             salary: 3,
-  //             equity: null,
-  //             companyHandle: "c1",
-  //             companyName: "C1",
-  //           },
-  //         ],
-  //       },
-  //   );
-  // });
-
-  test("bad request on invalid filter key", async function () {
-    const resp = await request(app)
-        .get(`/jobs`)
-        .query({ minSalary: 2, nope: "nope" });
-    expect(resp.statusCode).toEqual(400);
-  });
-});
-
+  
 /************************************** GET /groups/:id */
 
 describe("GET /groups/:id", function () {

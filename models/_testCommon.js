@@ -36,7 +36,7 @@ async function commonBeforeAll() {
         await bcrypt.hash("password1", BCRYPT_WORK_FACTOR),
         await bcrypt.hash("password2", BCRYPT_WORK_FACTOR),
       ]);
-//********** Had to change what wass applications into members and got rid of the company table all together. I am worried that might really change the other js files.  */
+
   await db.query(`
         INSERT INTO members(username, group_id)
         VALUES ('u1', $1)`,

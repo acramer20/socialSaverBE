@@ -5,7 +5,7 @@ const { NotFoundError} = require("../expressError");
 const { sqlForPartialUpdate } = require("../helpers/sql");
 
 
-/** Related functions for companies. */
+/** Related functions for groups */
 
 class Group {
   /** Create a group (from data), update db, return new job data.
@@ -128,7 +128,7 @@ class Group {
   
     /** Delete given group from database; returns undefined.
      *
-     * Throws NotFoundError if company not found.
+     * Throws NotFoundError if group not found.
      **/
   
     static async remove(id) {
