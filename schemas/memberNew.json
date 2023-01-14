@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome",
+  "definitions": {
+      "Welcome": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "username": {
+                  "type": "string"
+              },
+              "group_id": {
+                  "type": "string"
+              }
+          },
+          "required": [
+              "group_id",
+              "username"
+          ],
+          "title": "Welcome"
+      }
+  }
+}
